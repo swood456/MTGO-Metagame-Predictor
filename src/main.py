@@ -1,14 +1,14 @@
 import scraper
+import imageParse
 
 if __name__ == "__main__":
-	# placeholder cardcoded data from 7/1 legacy challenge
-	testUsers = ['Julian23', 'Bryant_Cook', 'Bahra', 'Breca', 'CryptomancerRB', 'DNSolver', 'FlyingTempest', 'NoGoodTsuna', 'wakarock', 'jjkbb2005', 'Mzfroste', 'ArmyofThalia', '_maddy', 'Lagerbon', 'ApolloTwelve', 'Pische10']
+	userList = imageParse.grabUserList()
 
-	metagame = scraper.build_metagame(testUsers)
+	metagame = scraper.build_metagame(userList)
 
 	metagameList = [(key, value) for key, value in metagame.items()]
 
 	metagameList = sorted(metagameList, key=lambda deck: deck[1], reverse=True)
-   
+
 	for deck in metagameList:
-		print('{}: {}%'.format(deck[0], round(deck[1] / len(testUsers) * 100, 2)))
+		print('{}: {}%'.format(deck[0], round(deck[1] / len(userList) * 100, 2)))
